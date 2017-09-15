@@ -51,5 +51,9 @@ pipeline {
         changed {
             echo "Things were different before"
         }
+
+        success {
+            echo "Build success"
+        }
     }
 }
