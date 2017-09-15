@@ -53,7 +53,7 @@ pipeline {
         }
 
         success {
-            echo "Build success"
+            echo "Build success!"
         }
     }
 }
