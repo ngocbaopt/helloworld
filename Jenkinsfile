@@ -1,32 +1,56 @@
 pipeline {
     agent { docker 'maven:3.3.3' }
     stages {
-        stage ('No-op') {
-            steps {
-                sh 'ls'
-            }
-        }
         stage ('build') {
             steps {
-                sh 'mvn --version'
+                echo "Build"
             }
         }
 
         stage ('Test') {
             steps {
-                sh './gradlew check'
+                echo "Test"
+            }
+        }
+
+        stage ('Deploy - Staging') {
+            steps {
+                echo "Deploy - Staging"
+            }
+        }
+
+        stage ('Sanity - Check') {
+            steps {
+                echo "Sanity - Check"
+            }
+        }
+
+        stage ('Deploy - Production') {
+            steps {
+                echo "Deploy - Production"
             }
         }
     }
 
     post {
         always {
-            echo 'One way or another, I have finished'
-            delete
+            echo "One way or another, I have finished"
         }
-        always {
-            archive 'build/libs/**/*.jar'
-            junit 'build/reports/**/*.xml'
+
+        success {
+            echo "I succeeded"
+        }
+
+        unstable {
+            echo "I'm unstable"
+        }
+
+        failure {
+            echo "I failed:("
+        }
+
+        changed {
+            echo "Things were different before"
         }
     }
 }
