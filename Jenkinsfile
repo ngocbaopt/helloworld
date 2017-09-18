@@ -53,8 +53,5 @@ pipeline {
             echo "Things were different before"
         }
 
-        success {
-            echo "Build success!"
-        }
     }
 }
