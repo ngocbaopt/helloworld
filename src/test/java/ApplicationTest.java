@@ -11,6 +11,6 @@ public class ApplicationTest {
 
     @Test
     public void testMain() {
-        assertEquals(application.hello(), "Hello World! Today is September 18th!");
+        assertEquals(application.hello(), "Hello World. Today is September 18th!");
     }
 }
